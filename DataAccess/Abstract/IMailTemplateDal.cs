@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstract
 {
-    public interface IAccountReconciliationDetailDal:IEntityRepository<AccountReconciliationDetail>
+    public interface IMailTemplateDal:IEntityRepository<MailTemplate>
     {
     }
 }
