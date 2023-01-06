@@ -9,6 +9,7 @@ namespace Business.Constans
     public class Messages
     {
         public static string AddedCompany = "Şirket Kaydı Başarıyla Tamamlandı";
+        public static string UpdatedCompany = "Şirket Kaydı Başarıyla Güncellendi";
         public static string CompanyAlreadyExists = "Bu şirket daha önce kaydedilmiştir.";
 
 
@@ -28,5 +29,27 @@ namespace Business.Constans
         public static string MailTemplateAdded = "Mail şablonu başarıyla kaydedildi";
         public static string MailTemplateUpdated = "Mail şablonu başarıyla kaydedildi";
         public static string MailTemplateDeleted = "Mail şablonu başarıyla kaydedildi";
+
+        public static string AddedCurrencyAccount = "Cari kaydı başarıyla eklendi";
+        public static string UpdatedCurrencyAccount = "Cari kaydı başarıyla güncellendi";
+        public static string DeletedCurrencyAccount = "Cari kaydı başarıyla silindi";
+        //public static string AccountHaveRecontiliations = "Mutabakat işlemi olan cari kaydı silemezsiniz. İsterseniz cariyi pasife çekebilirsiniz.";
+
+        public static string AddedAccountReconciliation = "Cari Mutabakat kaydı başarıyla eklendi";
+        public static string UpdatedAccountReconciliation = "Cari Mutabakat kaydı başarıyla güncellendi";
+        public static string DeletedAccountReconciliation = "Mutabakat kaydı başarıyla silindi";
+
+        public static string AddedCurrencyAccountDetail = "Cari Mutabakat detayları başarıyla eklendi";
+        public static string UpdatedAccountReconciliationDetail = "Cari Mutabakat detayları kaydı başarıyla güncellendi";
+        public static string DeletedAccountReconciliationDetail = "Mutabakat kaydı detayları başarıyla silindi";
+
+        public static string AddedBaBsReconciliation = "BaBs detay kaydı başarıyla eklendi";
+        public static string UpdatedBaBsReconciliation = "BaBs detay kaydı başarıyla güncellendi";
+        public static string DeletedBaBsReconciliation = "BaBs detay başarıyla silindi";
+
+        public static string AddedBaBsReconciliationDetail = "BaBs detay kaydı başarıyla eklendi";
+        public static string UpdatedBaBsReconciliationDetail = "BaBs detay kaydı başarıyla güncellendi";
+        public static string DeletedBaBsReconciliationDetail = "BaBs detay başarıyla silindi";
+
     }
 }
