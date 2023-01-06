@@ -1,5 +1,9 @@
 ﻿using Business.Abstract;
 using Business.Constans;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofact.Transaction;
+using Core.Aspects.Autofact.Validation;
+using Core.CrossCuttingConcerns.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Hashing;
 using Core.Utilities.Results.Abstract;
@@ -7,11 +11,13 @@ using Core.Utilities.Results.Concrete;
 using Core.Utilities.Security.JWT;
 using Entities.Concrete;
 using Entities.Dtos;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Business.Concrete
 {
@@ -23,6 +29,7 @@ namespace Business.Concrete
         private readonly IMailService _mailService;
         private readonly IMailParameterService _mailParameterService;
         private readonly IMailTemplateService _mailTemplateService;
+        
 
         public AuthManager(IUserService userService, ITokenHelper tokenHelper, ICompanyService companyService, IMailService mailService, IMailParameterService mailParameterService, IMailTemplateService mailTemplateService)
         {
@@ -53,7 +60,7 @@ namespace Business.Concrete
 
         public IDataResult<User> GetById(int id)
         {
-            return new SuccessDataResult<User>(_userService.GetById(id)); ;
+            return new SuccessDataResult<User>(_userService.GetById(id)); 
         }
 
         public IDataResult<User> GetByMailConfirmValue(string value)
@@ -74,7 +81,8 @@ namespace Business.Concrete
             }
             return new SuccessDataResult<User>(userToCheck, Messages.SuccessfulLogin);
         }
-
+        
+        [TransactionScopeAspect]
         public IDataResult<UserCompanyDto> Register(UserForRegister userForRegister, string password, Company company)
         {
             byte[] passwordHash, passwordSalt;
@@ -92,6 +100,9 @@ namespace Business.Concrete
                 Name = userForRegister.Name
 
             };
+            //ValidationTool.Validate(new UserValidator(), user);
+            //ValidationTool.Validate(new CompanyValidator(), company);
+            
             _userService.Add(user);
             _companyService.Add(company);
 
@@ -110,11 +121,11 @@ namespace Business.Concrete
                 PasswordHash = user.PasswordHash,
                 PasswordSalt = user.PasswordSalt
             };
-            SendConfrimEmail(user);
+            SendConfirmEmail(user);
             return new SuccessDataResult<UserCompanyDto>(userCompanyDto, Messages.UserRegistired);
         }
 
-        void SendConfrimEmail(User user)
+        void SendConfirmEmail(User user)
         {
             string subject = "Kullanıcı Kayıt Onay Maili";
             string body = "Kullanıcınız sisteme kayıt oldu. Kaydınızı tamamlamak için aşağıdaki linke tıklamanız gerekmektedir.";
@@ -140,7 +151,8 @@ namespace Business.Concrete
             user.MailConfirmDate = DateTime.Now;
             _userService.Update(user);
         }
-        public IDataResult<User> RegisterSecondAccount(UserForRegister userForRegister, string password)
+        [TransactionScopeAspect]
+        public IDataResult<User> RegisterSecondAccount(UserForRegister userForRegister, string password, int companyId)
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
@@ -158,6 +170,8 @@ namespace Business.Concrete
 
             };
             _userService.Add(user);
+            _companyService.UserCompanyAdd(user.Id, companyId);
+            SendConfirmEmailAgain(user);
             return new SuccessDataResult<User>(user, Messages.UserRegistired);
         }
 
@@ -199,12 +213,16 @@ namespace Business.Concrete
             }
             SendConfirmEmailAgain(user);
             return new SuccessResult(Messages.MailConfirmSendSuccessful);
-
         }
 
         public IDataResult<User> GetByEmail(string email)
         {
             return new SuccessDataResult<User>(_userService.GetByMail(email));
+        }
+
+        public IDataResult<UserCompany> GetCompany(int userId)
+        {
+            return new SuccessDataResult<UserCompany>(_companyService.GetCompany(userId).Data);
         }
     }
 }
