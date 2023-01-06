@@ -11,11 +11,48 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net6.0\Entities.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net6.0\Entities.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net6.0\Entities.deps.json" />
+    <Content Include="obj\Debug\net6.0\Entities.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Entities.csproj.nuget.dgspec.json" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Abstract\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\Core.dll" />
+    <None Include="bin\Debug\net6.0\Core.pdb" />
+    <None Include="bin\Debug\net6.0\Entities.dll" />
+    <None Include="bin\Debug\net6.0\Entities.pdb" />
+    <None Include="obj\Debug\net6.0\Entities.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net6.0\Entities.assets.cache" />
+    <None Include="obj\Debug\net6.0\Entities.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net6.0\Entities.csproj.CopyComplete" />
+    <None Include="obj\Debug\net6.0\Entities.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net6.0\Entities.dll" />
+    <None Include="obj\Debug\net6.0\Entities.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net6.0\Entities.pdb" />
+    <None Include="obj\Debug\net6.0\refint\Entities.dll" />
+    <None Include="obj\Debug\net6.0\ref\Entities.dll" />
+    <None Include="obj\Entities.csproj.nuget.g.props" />
+    <None Include="obj\Entities.csproj.nuget.g.targets" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
 </Project>
