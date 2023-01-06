@@ -7,9 +7,46 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.0" />
+    <Compile Include="obj\Debug\net6.0\.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" />
+    <Compile Include="obj\Debug\net6.0\Core.AssemblyInfo.cs" />
+    <Compile Include="obj\Debug\net6.0\Core.GlobalUsings.g.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\net6.0\Core.deps.json" />
+    <Content Include="obj\Core.csproj.nuget.dgspec.json" />
+    <Content Include="obj\Debug\net6.0\Core.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\net6.0\Core.dll" />
+    <None Include="bin\Debug\net6.0\Core.pdb" />
+    <None Include="obj\Core.csproj.nuget.g.props" />
+    <None Include="obj\Core.csproj.nuget.g.targets" />
+    <None Include="obj\Debug\net6.0\Core.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\net6.0\Core.assets.cache" />
+    <None Include="obj\Debug\net6.0\Core.csproj.AssemblyReference.cache" />
+    <None Include="obj\Debug\net6.0\Core.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\net6.0\Core.dll" />
+    <None Include="obj\Debug\net6.0\Core.GeneratedMSBuildEditorConfig.editorconfig" />
+    <None Include="obj\Debug\net6.0\Core.pdb" />
+    <None Include="obj\Debug\net6.0\refint\Core.dll" />
+    <None Include="obj\Debug\net6.0\ref\Core.dll" />
+    <None Include="obj\project.nuget.cache" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.5.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.1" />
+    <PackageReference Include="Castle.Core" Version="5.1.0" />
+    <PackageReference Include="FluentValidation" Version="11.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="6.0.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.25.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.25.1" />
   </ItemGroup>
 
 </Project>
